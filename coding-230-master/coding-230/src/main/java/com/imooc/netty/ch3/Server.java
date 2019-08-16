@@ -31,7 +31,7 @@ public final class Server {
 //                    .option(ChannelOption.SO_SNDBUF, 32 * 1024) // 设置发送缓冲大小
 //                    .option(ChannelOption.SO_RCVBUF, 32 * 1024) // 这是接收缓冲大小
 //                    .option(ChannelOption.SO_KEEPALIVE, true) // 保持连接
-                    .childAttr(AttributeKey.newInstance("childAttr"), "childAttrValue")
+                    .childAttr(AttributeKey.valueOf("childAttr"), "childAttrValue")
                     .handler(new ServerHandler())
                     .childHandler(new ChannelInitializer<SocketChannel>() { // //SocketChannel建立连接后的管道
                         @Override

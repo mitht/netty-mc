@@ -14,13 +14,22 @@ public class AuthHandler extends SimpleChannelInboundHandler<ByteBuf> {
     }
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, ByteBuf password) throws Exception {
+    protected void messageReceived(ChannelHandlerContext ctx, ByteBuf password) throws Exception {
         if (paas(password)) {
             ctx.pipeline().remove(this);
         } else {
             ctx.close();
         }
     }
+
+//    @Override
+//    protected void channelRead0(ChannelHandlerContext ctx, ByteBuf password) throws Exception {
+//        if (paas(password)) {
+//            ctx.pipeline().remove(this);
+//        } else {
+//            ctx.close();
+//        }
+//    }
 
     private boolean paas(ByteBuf password) {
         return false;

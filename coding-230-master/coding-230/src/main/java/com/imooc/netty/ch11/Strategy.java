@@ -1,10 +1,9 @@
 package com.imooc.netty.ch11;
 
-import io.netty.util.concurrent.DefaultEventExecutorChooserFactory;
 import io.netty.util.concurrent.EventExecutor;
 
 /**
- * @see DefaultEventExecutorChooserFactory#newChooser(EventExecutor[])
+// * @see DefaultEventExecutorChooserFactory#newChooser(EventExecutor[])
  */
 public class Strategy {
     private Cache cacheMemory = new CacheMemoryImpl();

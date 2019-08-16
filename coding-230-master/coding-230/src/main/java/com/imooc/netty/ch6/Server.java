@@ -24,7 +24,7 @@ public final class Server {
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .childOption(ChannelOption.TCP_NODELAY, true)
-                    .childAttr(AttributeKey.newInstance("childAttr"), "childAttrValue")
+                    .childAttr(AttributeKey.valueOf("childAttr"), "childAttrValue")
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         public void initChannel(SocketChannel ch) {

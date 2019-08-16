@@ -18,7 +18,7 @@ public class ServerBusinessHandler extends SimpleChannelInboundHandler<ByteBuf> 
         ByteBuf data = Unpooled.directBuffer();
         data.writeBytes(msg);
         Object result = getResult(data);
-        ctx.channel().writeAndFlush(result);
+        ctx.channel().writeAndFlush(Integer.valueOf(result.toString())+0.111);
     }
 
     protected Object getResult(ByteBuf data) {

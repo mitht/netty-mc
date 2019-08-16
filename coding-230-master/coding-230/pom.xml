@@ -10,6 +10,8 @@
 
     <properties>
         <netty-all.version>4.1.6.Final</netty-all.version>
+        <version>5.0.0.Alpha1</version>
+        <!--<netty-all.version>5.0.0.Alpha1</netty-all.version>-->
     </properties>
 
 

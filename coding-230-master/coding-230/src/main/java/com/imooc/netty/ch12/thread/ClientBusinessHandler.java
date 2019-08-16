@@ -30,7 +30,7 @@ public class ClientBusinessHandler extends SimpleChannelInboundHandler<ByteBuf> 
         } catch (InterruptedException ignored) {
         }
     });
-
+    //当前channel激活的时候
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
         ctx.executor().scheduleAtFixedRate(() -> {
@@ -41,9 +41,10 @@ public class ClientBusinessHandler extends SimpleChannelInboundHandler<ByteBuf> 
 
         }, 0, 1, TimeUnit.SECONDS);
     }
-
+    //当前channel从远端读取到数据
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) {
+        //为先添加后获取
         totalResponseTime.addAndGet(System.currentTimeMillis() - msg.readLong());
         totalRequest.incrementAndGet();
 

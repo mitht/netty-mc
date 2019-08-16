@@ -1,0 +1,7 @@
+fd:     file descriptor 文件描述符,描述符就是一个数字
+
+传统使用的是 select和poll
+
+检查缓冲区有无数据,没有的话返回 ewould block
+epoll 使用事件驱动,如果有文件就绪触发回调
+

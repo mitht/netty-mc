@@ -1,0 +1,17 @@
+cat /proc/sys/fs/file-max 查看ubuntu支持的句柄数量 1百万
+FD 文件描述符
+unix 网络编程
+select 默认1024
+1g 内存 默认10万个
+------
+使用epoll 不受操作系统的最大文件句柄数的限制
+
+select/poll 线性的扫描全部集合,性能下降
+epoll 使用 callback 不会有这个问题
+
+pipe 管道
+channel 渠道,频道,自来水管,是一个通道,双向的,读写支持
+多路复用器 selector, 同时轮询多个channel,使用的是epoll,没有最大的文件限制
+
+
+
