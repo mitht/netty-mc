@@ -66,17 +66,17 @@ public class SimpleChatServerHandler extends SimpleChannelInboundHandler<String>
     }
 //4. 调用channelRead0方法完成客户端数据的读取和相应
 
-//    @Override
-//    protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-//        Channel incoming = ctx.channel();
-//        for (Channel channel : channels) {
-//            if (channel != incoming){
-//                channel.writeAndFlush("[" + incoming.remoteAddress() + "]" + msg + "\n");
-//            }else {
-//                channel.writeAndFlush("[you]" + msg + "\n");
-//            }
-//        }
-//    }
+    @Override
+    protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
+        Channel incoming = ctx.channel();
+        for (Channel channel : channels) {
+            if (channel != incoming){
+                channel.writeAndFlush("[" + incoming.remoteAddress() + "]" + msg + "\n");
+            }else {
+                channel.writeAndFlush("[you]" + msg + "\n");
+            }
+        }
+    }
 //5.覆盖了 channelActive() 事件处理方法。服务端监听到客户端活动
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -102,15 +102,15 @@ public class SimpleChatServerHandler extends SimpleChannelInboundHandler<String>
         ctx.close();
     }
 
-    @Override
-    protected void messageReceived(ChannelHandlerContext ctx, String msg) throws Exception {
-        Channel incoming = ctx.channel();
-        for (Channel channel : channels) {
-            if (channel != incoming){
-                channel.writeAndFlush("[" + incoming.remoteAddress() + "]" + msg + "\n");
-            }else {
-                channel.writeAndFlush("[you]" + msg + "\n");
-            }
-        }
-    }
+//    @Override
+//    protected void messageReceived(ChannelHandlerContext ctx, String msg) throws Exception {
+//        Channel incoming = ctx.channel();
+//        for (Channel channel : channels) {
+//            if (channel != incoming){
+//                channel.writeAndFlush("[" + incoming.remoteAddress() + "]" + msg + "\n");
+//            }else {
+//                channel.writeAndFlush("[you]" + msg + "\n");
+//            }
+//        }
+//    }
 }

@@ -15,8 +15,14 @@ public class SimpleChatClientHandler extends SimpleChannelInboundHandler<String>
 //        System.out.println(msg);
 //    }
 
+//    @Override
+//    protected void messageReceived(ChannelHandlerContext channelHandlerContext, String s) throws Exception {
+//        System.out.println(s);
+//
+//    }
+
     @Override
-    protected void messageReceived(ChannelHandlerContext channelHandlerContext, String s) throws Exception {
+    protected void channelRead0(ChannelHandlerContext channelHandlerContext, String s) throws Exception {
         System.out.println(s);
 
     }

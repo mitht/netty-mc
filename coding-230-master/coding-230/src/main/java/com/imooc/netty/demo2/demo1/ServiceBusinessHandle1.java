@@ -25,13 +25,13 @@ public class ServiceBusinessHandle1 extends SimpleChannelInboundHandler<ByteBuf>
     Heap和Direct：一个是在堆上分配，一个是直接内存。Direct不受GC的控制。
     *
     * */
-//    @Override
-//    protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
-//        ByteBuf data = Unpooled.directBuffer();
-//        data.writeBytes(msg);
-//        Object result = getResult(data);
-//        ctx.channel().writeAndFlush(result);
-//    }
+    @Override
+    protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
+        ByteBuf data = Unpooled.directBuffer();
+        data.writeBytes(msg);
+        Object result = getResult(data);
+        ctx.channel().writeAndFlush(result);
+    }
     //模拟数据库取值的,耗时操作
     protected Object getResult(ByteBuf data){
         int level = ThreadLocalRandom.current().nextInt(1, 1000);
@@ -58,11 +58,11 @@ public class ServiceBusinessHandle1 extends SimpleChannelInboundHandler<ByteBuf>
         // ignore
     }
 
-    @Override
-    protected void messageReceived(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
-        ByteBuf data = Unpooled.directBuffer();
-        data.writeBytes(msg);
-        Object result = getResult(data);
-        ctx.channel().writeAndFlush(result);
-    }
+//    @Override
+//    protected void messageReceived(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
+//        ByteBuf data = Unpooled.directBuffer();
+//        data.writeBytes(msg);
+//        Object result = getResult(data);
+//        ctx.channel().writeAndFlush(result);
+//    }
 }
